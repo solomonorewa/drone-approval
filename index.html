@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone Access Approval</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      text-align: center;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Drone Access Approval</h2>
+    <p>Select access permission below:</p>
+    <form target="_blank"
+      action="https://io.adafruit.com/api/v2/webhooks/feed/drone-control-access"
+      method="post">
+      <label>
+        <select name="value">
+          <option value="allow access" selected>Allow Access</option>
+          <option value="deny access">Deny Access</option>
+        </select>
+      </label>
+      <button type="submit">✅ Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+
