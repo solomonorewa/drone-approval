@@ -13,12 +13,16 @@
       align-items: center;
       height: 100vh;
     }
+    .wrapper {
+      display: flex;
+      gap: 30px;
+    }
     .container {
       background: white;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 400px;
+      width: 350px;
       text-align: center;
     }
     select, button {
@@ -36,24 +40,69 @@
     button:hover {
       background-color: #218838;
     }
+    .code-box {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 15px 0;
+      padding: 10px;
+      border: 2px dashed #555;
+      border-radius: 8px;
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h2>Drone Access Approval</h2>
-    <p>Select access permission below:</p>
-    <form target="_blank"
-      action="https://io.adafruit.com/api/v2/webhooks/feed/1y52uNCwFzjSmgu9r7BKzJXhT77a"
-      method="post">
-      <label>
-        <select name="value">
-          <option value="allow_access" selected>Allow Access</option>
-          <option value="deny_access">Deny Access</option>
-        </select>
-      </label>
-      <button type="submit">✅ Submit</button>
-    </form>
+  <div class="wrapper">
+
+    <!-- FIRST FORM (Access Control) -->
+    <div class="container">
+      <h2>Drone Access Approval</h2>
+      <p>Select access permission below:</p>
+
+      <form target="_blank"
+        action="https://io.adafruit.com/api/v2/webhooks/feed/1y52uNCwFzjSmgu9r7BKzJXhT77a"
+        method="post">
+
+        <label>
+          <select name="value">
+            <option value="allow_access" selected>Allow Access</option>
+            <option value="deny_access">Deny Access</option>
+          </select>
+        </label>
+
+        <button type="submit">✅ Submit</button>
+      </form>
+    </div>
+
+    <!-- SECOND FORM (Reset Code) -->
+    <div class="container">
+      <h2>Reset Access Code</h2>
+      <p>Generate and send a new 4-digit code:</p>
+
+      <div id="codeDisplay" class="code-box">----</div>
+
+      <button onclick="generateCode()">Reset Code</button>
+
+      <form id="codeForm"
+        target="_blank"
+        action="https://io.adafruit.com/api/v2/webhooks/feed/1y52uNCwFzjSmgu9r7BKzJXhT77a"
+        method="post"
+        style="margin-top: 15px;">
+
+        <input type="hidden" name="value" id="hiddenCodeInput">
+
+        <button type="submit">📩 Send Code</button>
+      </form>
+    </div>
+
   </div>
+
+  <script>
+    function generateCode() {
+      const code = Math.floor(1000 + Math.random() * 9000); // random 4-digit code
+      document.getElementById("codeDisplay").innerText = code;
+      document.getElementById("hiddenCodeInput").value = code;
+    }
+  </script>
 </body>
 </html>
-
