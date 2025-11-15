@@ -98,11 +98,11 @@
   </div>
 
   <script>
-    function generateCode() {
-      const code = Math.floor(1000 + Math.random() * 9000); // random 4-digit code
-      document.getElementById("codeDisplay").innerText = code;
-      document.getElementById("hiddenCodeInput").value = code;
-    }
-  </script>
+  function generateCode() {
+    const code = Math.floor(100000 + Math.random() * 900000); // random 6-digit code
+    document.getElementById("codeDisplay").innerText = code;
+    document.getElementById("hiddenCodeInput").value = "allow_code_reset_" + code;
+  }
+</script>
 </body>
 </html>
