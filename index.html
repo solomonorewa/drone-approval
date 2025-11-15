@@ -89,14 +89,12 @@
       <!--
       <div id="codeDisplay" class="code-box">----</div>
        -->
-      <button onclick="generateCode()">Reset Code</button>
-     
       <form id="codeForm"
         target="_blank"
         action="https://io.adafruit.com/api/v2/webhooks/feed/1y52uNCwFzjSmgu9r7BKzJXhT77a"
         method="post"
         style="margin-top: 15px;">
-
+        <button onclick="generateCode()">Reset Code</button>
         <input type="text" name="value" id="hiddenCodeInput" style="width:100%; margin-top:10px;">
 
         <button type="submit">📩 Send Code</button>
@@ -108,7 +106,7 @@
   <script>
     function generateCode() {
       const code = Math.floor(100000 + Math.random() * 900000); // random 6-digit code
-      document.getElementById("codeDisplay").innerText = code;
+      //document.getElementById("codeDisplay").innerText = code;
       document.getElementById("hiddenCodeInput").value = code; // user can edit
     }
 
