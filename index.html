@@ -48,6 +48,14 @@
       border: 2px dashed #555;
       border-radius: 8px;
     }
+    #hiddenCodeInput {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 15px 0;
+      padding: 10px;
+      border: 2px dashed #555;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -78,11 +86,11 @@
     <div class="container">
       <h2>Reset Access Code</h2>
       <p>Generate and send a new 6-digit code:</p>
-
+      <!--
       <div id="codeDisplay" class="code-box">----</div>
-
+       -->
       <button onclick="generateCode()">Reset Code</button>
-
+     
       <form id="codeForm"
         target="_blank"
         action="https://io.adafruit.com/api/v2/webhooks/feed/1y52uNCwFzjSmgu9r7BKzJXhT77a"
